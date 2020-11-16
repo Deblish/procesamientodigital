@@ -35,10 +35,10 @@ figure(4);
 plot(log(abs(fftshift(fft_11))));
 
 %Imagenes convolucionadas
-convl_7=imfilter(imagen, filter_7, 'full');
+convl_7=imfilter(imagen, filter_7, 'conv');
 figure(5);
 imshow(convl_7);
-convl_11=imfilter(imagen, filter_11, 'full');
+convl_11=imfilter(imagen, filter_11, 'conv');
 figure(6);
 imshow(convl_11);
 
