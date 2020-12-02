@@ -4,11 +4,11 @@ clear
 %impresion
 figure('Renderer', 'painters', 'Position', [350 200 800 400])
 subplot(1,2,1);
-imshow(im_f/255);
+imshow(im_f, []);
 title("Original");
 
 subplot(1,2,2);
-imshow(imn_f/255);
+imshow(imn_f, []);
 title("Ruido");
 
 %punto1: generar im_noise
@@ -19,10 +19,10 @@ imn = imnoise(im, "gaussian");
 %punto2: 4 filtros (11x11, 7x7, 5x5, 3x3) paso bajas de bloque a im e im_noise
 N = 11; %5, 7, 11
 f = ones(N)/(N*N);
-im_f = conv2(im, f, 'same'); 
-%im_f = filter2(f, im, 'same'); %correlacion
-imn_f = conv2(imn, f, 'same');
-%imn_f = filter2(f, imn, 'same'); %correlacion
+%im_f = conv2(im, f, 'same'); 
+im_f = filter2(f, im, 'same'); %correlacion
+%imn_f = conv2(imn, f, 'same');
+imn_f = filter2(f, imn, 'same'); %correlacion
 
 %punto3: 4 filtros (11x11, 7x7, 5x5, 3x3) paso bajas binomiales a im e im_noise
 binom = [1 2 1] %3
