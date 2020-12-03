@@ -1,0 +1,8 @@
+
+function [r] = zero_interp(mat, n)
+    r = zero_fill_interp(mat, n);
+    filter = zeros(1, n+1);
+    filter(1)=1;
+    filter(n+1)=1;
+    r = conv2(mat, filter);
+end
